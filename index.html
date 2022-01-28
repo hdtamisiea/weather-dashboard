@@ -25,28 +25,27 @@
   <main class="container-fluid">
     <div class="row flex-row justify-space-between">
 
-    
-        <div class="col-12 col-md-4">
-          <div class="card">
-            <h3 class="card-header text-uppercase text-center">Type City Name Below:</h3>
-            <form id="city-form" class="card-body">
-              <!-- <label class="form-label" for="cityName">Type city name here:</label> -->
-              <input name="cityName" id="cityName" type="text" autofocus="true" style="height:40px"
-                class="form-input col mb-3" />
-              <button type="submit" class="btn btn-primary btn-block">Get Weather</button>
-            </form>
-          </div>
-
-          <div class="recent-searches">
-            <h3 class="mt-5">Recent Searches:</h3>
-          </div>
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <h3 class="card-header text-uppercase text-center">Type City Name Below:</h3>
+          <form id="city-form" class="card-body">
+            <!-- <label class="form-label" for="cityName">Type city name here:</label> -->
+            <input name="cityName" id="cityName" type="text" autofocus="true" style="height:40px"
+              class="form-input col mb-3" />
+            <button type="submit" class="btn btn-primary btn-block">Get Weather</button>
+          </form>
         </div>
 
-      
+        <div class="recent-searches">
+          <h3 class="mt-5">Recent Searches:</h3>
+        </div>
+      </div>
+
+
 
       <div class="col-12 col-md-8">
         <!-- current day weather data -->
-        <div id="current-day-info">
+        <div id="current-day-info"class="border border-success">
           <h2 id="current-day-city-date-icon">City (Date) Weather Conditions</h2>
           <p id="current-day-temp">Temp: </p>
           <p id="current-day-wind">Wind: </p>
@@ -58,13 +57,53 @@
           <div>
             <h3>5 day forecast</h3>
           </div>
-          <!-- 5 days -->
-          <div>
-          </div>
-        </div>
 
+          <div id="five-day-box" class="row">
+
+            <div id="day-one-box" class="col m-3 daily-box border border-success">
+              <h4 id="day-one-date">Day One Date</h4>
+              <p id="day-one-icon" class="daily-icon">pic of cloud</p>
+              <p id="day-one-temp">Temp: </p>
+              <p id="day-one-wind">Wind: </p>
+              <p id="day-one-humidity">Humidity: </p>
+            </div>
+
+            <div id="day-two-box" class="col m-3 daily-box border border-success">
+              <h4 id="day-two-date">Day Two Date</h4>
+              <p id="day-two-icon" class="daily-icon">pic of cloud</p>
+              <p id="day-two-temp">Temp: </p>
+              <p id="day-two-wind">Wind: </p>
+              <p id="day-two-humidity">Humidity: </p>
+            </div>
+
+            <div id="day-three-box" class="col m-3 daily-box border border-success">
+              <h4 id="day-three-date">Day Three Date</h4>
+              <p id="day-three-icon" class="daily-icon">pic of cloud</p>
+              <p id="day-three-temp">Temp: </p>
+              <p id="day-three-wind">Wind: </p>
+              <p id="day-three-humidity">Humidity: </p>
+            </div>
+
+            <div id="day-four-box" class="col m-3 daily-box border border-success">
+              <h4 id="day-four-date">Day Four Date</h4>
+              <p id="day-four-icon" class="daily-icon">pic of cloud</p>
+              <p id="day-four-temp">Temp: </p>
+              <p id="day-four-wind">Wind: </p>
+              <p id="day-four-humidity">Humidity: </p>
+            </div>
+
+            <div id="day-five-box" class="col m-3 daily-box border border-success">
+              <h4 id="day-five-date">Day five Date</h4>
+              <p id="day-five-icon" class="daily-icon">pic of cloud</p>
+              <p id="day-five-temp">Temp: </p>
+              <p id="day-five-wind">Wind: </p>
+              <p id="day-five-humidity">Humidity: </p>
+            </div>
+
+          </div>
+
+        </div>
       </div>
-    </div>
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

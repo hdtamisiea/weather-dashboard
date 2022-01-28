@@ -13,3 +13,8 @@
 h1 {
     text-align: center;
 }
+
+.daily-box {
+   color: white;
+    background-color: #1aa738;
+}

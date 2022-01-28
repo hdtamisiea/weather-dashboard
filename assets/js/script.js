@@ -3,29 +3,29 @@ var cityName = "tampa";
 var cityFormEl = document.querySelector("#city-form");
 var cityInputEl = document.querySelector("#cityName");
 // added moment.js to get current date
-var date = moment().format("MMM Do, YYYY"); 
+var date = moment().format("MMM Do, YYYY");
 
-var getFiveDayStats = function() {
-    // format the openweathermap api url
-    var apiUrlFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=95f4113ff118dc3d9eecf2014570612e&units=imperial";
-  
-    // make a request to the url
-    fetch(apiUrlFiveDay).then(function(response) {
-      response.json().then(function(data) {
-        console.log(data);
-    
-      });
+var getFiveDayStats = function () {
+  // format the openweathermap api url
+  var apiUrlFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=95f4113ff118dc3d9eecf2014570612e&units=imperial";
+
+  // make a request to the url
+  fetch(apiUrlFiveDay).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
+
     });
-  };
+  });
+};
 
-var getCityStats = function() {
+var getCityStats = function () {
   // format the openweathermap api url
   var apiUrlCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=95f4113ff118dc3d9eecf2014570612e&units=imperial";
 
   // make a request to the url
-  fetch(apiUrlCurrent).then(function(response) {
-    response.json().then(function(data) {
-      console.log(data);      
+  fetch(apiUrlCurrent).then(function (response) {
+    response.json().then(function (data) {
+      console.log(data);
 
       var currentDayCityDateIcon = document.querySelector("#current-day-city-date-icon");
       var currentDayTemp = document.querySelector("#current-day-temp");
@@ -33,11 +33,11 @@ var getCityStats = function() {
       var currentDayHumidity = document.querySelector("#current-day-humidity");
       var currentDayUV = document.querySelector("#current-day-uv");
 
-     
-      
+
+
       currentDayCityDateIcon.textContent = data.name + " (" + date + ") " + data.weather[0].description;
-      currentDayTemp.textContent = "Temp: " + data.main.temp;
-      currentDayWind.textContent = "Wind: " + data.wind.speed;
+      currentDayTemp.textContent = "Temp: " + data.main.temp + " \xB0F";
+      currentDayWind.textContent = "Wind: " + data.wind.speed + " MPH";
       currentDayHumidity.textContent = "Humidity: " + data.main.humidity;
       // currentDayUV.textContent = "UV Index: " + data.?;
 
@@ -49,27 +49,27 @@ var getCityStats = function() {
       getFiveDayStats()
 
 
-  
+
     });
   });
 };
 
-  var formSubmitHandler = function(event) {
-    event.preventDefault();
-    // get value from input element
-    cityName = cityInputEl.value.trim();
+var formSubmitHandler = function (event) {
+  event.preventDefault();
+  // get value from input element
+  cityName = cityInputEl.value.trim();
 
-if (cityName) {
-  getCityStats(cityName);
-  // reset box to be empty
-  cityInputEl.value = "";
-} else {
-  alert("Please enter a City Name");
-}
-    console.log(event);
-  };
+  if (cityName) {
+    getCityStats(cityName);
+    // reset box to be empty
+    cityInputEl.value = "";
+  } else {
+    alert("Please enter a City Name");
+  }
+  console.log(event);
+};
 
-  cityFormEl.addEventListener("submit", formSubmitHandler);
+cityFormEl.addEventListener("submit", formSubmitHandler);
 
 
 
@@ -86,7 +86,7 @@ if (cityName) {
 // $("#clear-history").on("click", clearHistory);
 
 // var getUVIndex = function(event) {
-//   var apiUrlUV 
+//   var apiUrlUV
 
 //   //get UV Index
 //   var uvIndexURL = "https://api.openweathermap.org/data/2.5/uvi?appid=7e4c7478cc7ee1e11440bf55a8358ec3&lat=" + response.coord.lat + "&lon=" + response.coord.lat;
