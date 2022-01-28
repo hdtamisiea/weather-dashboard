@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <header class="hero container-fluid">
+    <div class="row" id="weatherDashboard">
+      <h1 class="col font-weight-bold text-light">Weather Dashboard</h1>
+    </div>
+  </header>
+
+
+  <main class="container-fluid">
+    <div class="row flex-row justify-space-between">
+
+    
+        <div class="col-12 col-md-4">
+          <div class="card">
+            <h3 class="card-header text-uppercase text-center">Type City Name Below:</h3>
+            <form id="city-form" class="card-body">
+              <!-- <label class="form-label" for="cityName">Type city name here:</label> -->
+              <input name="cityName" id="cityName" type="text" autofocus="true" style="height:40px"
+                class="form-input col mb-3" />
+              <button type="submit" class="btn btn-primary btn-block">Get Weather</button>
+            </form>
+          </div>
+
+          <div class="recent-searches">
+            <h3 class="mt-5">Recent Searches:</h3>
+          </div>
+        </div>
+
+      
+
+      <div class="col-12 col-md-8">
+        <!-- current day weather data -->
+        <div id="current-day-info">
+          <h2 id="current-day-city-date-icon">City (Date) Weather Conditions</h2>
+          <p id="current-day-temp">Temp: </p>
+          <p id="current-day-wind">Wind: </p>
+          <p id="current-day-humidity">Humidity: </p>
+          <p id="current-day-uv">UV Index: </p>
+        </div>
+
+        <div>
+          <div>
+            <h3>5 day forecast</h3>
+          </div>
+          <!-- 5 days -->
+          <div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
