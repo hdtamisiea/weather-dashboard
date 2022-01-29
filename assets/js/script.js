@@ -1,9 +1,11 @@
 var APIKey = "95f4113ff118dc3d9eecf2014570612e";
-var cityName = "tampa";
+// var cityName = "tampa";
 var cityFormEl = document.querySelector("#city-form");
 var cityInputEl = document.querySelector("#cityName");
 // added moment.js to get current date
 var date = moment().format("MMM Do, YYYY");
+// var iconDescription = data.weather[0].description || weather[0].main;
+
 
 var getFiveDayStats = function () {
   // format the openweathermap api url
@@ -14,7 +16,21 @@ var getFiveDayStats = function () {
     response.json().then(function (data) {
       console.log(data);
 
-    });
+      for (var i = 0; i < data.length; i = i + 8) 
+        console.log(data.length);
+        var dayOneDate = document.querySelector("#day-one-date");
+        var dayOneTemp = document.querySelector("#day-one-temp");
+        var dayOneWind = document.querySelector("#day-one-wind");
+        var dayOneHumidity = document.querySelector("#day-one-humidity");
+
+        // dayOneDate.textContent = "Date: " + data.list[i].dt_txt;
+        // console.log(data.list[i].dt_txt);
+
+        dayOneTemp.textContent = "Temp: " + data.list[i].main.temp + " \xB0F";
+        dayOneWind.textContent = "Wind: " + data.list[i].wind.speed + " MPH";
+        dayOneHumidity.textContent = "Humidity: " + data.list[i].main.humidity + " %";
+      }
+    );
   });
 };
 
@@ -27,7 +43,7 @@ var getCityStats = function () {
     response.json().then(function (data) {
       console.log(data);
 
-      var currentDayCityDateIcon = document.querySelector("#current-day-city-date-icon");
+      var currentDayCityDate = document.querySelector("#current-day-city-date");
       var currentDayTemp = document.querySelector("#current-day-temp");
       var currentDayWind = document.querySelector("#current-day-wind");
       var currentDayHumidity = document.querySelector("#current-day-humidity");
@@ -35,21 +51,19 @@ var getCityStats = function () {
 
 
 
-      currentDayCityDateIcon.textContent = data.name + " (" + date + ") " + data.weather[0].description;
+      currentDayCityDate.textContent = data.name + " (" + date + ") ";
       currentDayTemp.textContent = "Temp: " + data.main.temp + " \xB0F";
       currentDayWind.textContent = "Wind: " + data.wind.speed + " MPH";
-      currentDayHumidity.textContent = "Humidity: " + data.main.humidity;
+      currentDayHumidity.textContent = "Humidity: " + data.main.humidity + " %";
       // currentDayUV.textContent = "UV Index: " + data.?;
 
-
-
-
+      var iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+      var currentDayIcon = document.querySelector(".current-day-icon");
+      currentDayIcon.setAttribute('src', iconUrl);
+      // currentDayIcon.setAttribute('alt', iconDescription);
 
       // calling the 5 day forecast function
       getFiveDayStats()
-
-
-
     });
   });
 };
