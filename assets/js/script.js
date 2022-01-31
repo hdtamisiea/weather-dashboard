@@ -34,7 +34,7 @@ var getFiveDayStats = function () {
         var forecastWind = document.createElement("li");
         var forecastHumidity = document.createElement("li");
 
-        card.setAttribute("class", "card col");
+        card.setAttribute("class", "card col-sm-12 col-md-4 col-lg-3 col-xl-2  m-3");
         cardBody.setAttribute("class", "card-body");
         // forecastIcon.setAttribute('src', iconUrl);
 
