@@ -17,7 +17,7 @@ let forecastDates = [date1, date2, date3, date4, date5];
 var getFiveDayStats = function (cityName) {
   // format the openweathermap api url
   var apiUrlFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=95f4113ff118dc3d9eecf2014570612e&units=imperial";
-
+  
   // make a request to the url
   fetch(apiUrlFiveDay).then(function (response) {
     return response.json();
@@ -54,7 +54,7 @@ var getFiveDayStats = function (cityName) {
         dailyBox.append(card);
         card.append(cardBody);
         cardBody.append(forecastDate, iconEl, forecastTemp, forecastWind, forecastHumidity);
-
+       
       }
     });
 };
@@ -82,38 +82,57 @@ var getCityStats = function (cityName) {
                   var currentDayTemp = document.querySelector("#current-day-temp");
                   var currentDayWind = document.querySelector("#current-day-wind");
                   var currentDayHumidity = document.querySelector("#current-day-humidity");
-                  var currentDayUV = document.querySelector("#current-day-uv");
+                  var currentDayUV = document.querySelector("#uvBtn");
 
                   currentDayCityDate.textContent = data.name + " (" + date + ") ";
                   currentDayTemp.textContent = "Temp: " + data.main.temp + " \xB0F";
                   currentDayWind.textContent = "Wind: " + data.wind.speed + " MPH";
                   currentDayHumidity.textContent = "Humidity: " + data.main.humidity + " %";
-                  currentDayUV.textContent = "UV Index: " + data2.current.uvi;
+                  currentDayUV.textContent = data2.current.uvi;
+
+                  let uvi = data2.current.uvi
+                  // let uvBtnEl = document.getElementById("uvBtn");
+                  
+                  if (uvi < 2) {
+                    currentDayUV.classList.add("bg-success");
+                  }
+
+                  else if (uvi >= 2.01 &&
+                    uvi <= 5.0) {
+                    currentDayUV.classList.add("bg-warning");
+                  }
+
+                  else { 
+                    currentDayUV.classList.add("bg-danger");
+                  }
+
 
                   var iconUrl = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
                   var currentDayIcon = document.querySelector(".current-day-icon");
                   currentDayIcon.setAttribute('src', iconUrl);
 
+
+
                   // calling the 5 day forecast function
                   getFiveDayStats(cityName)
                 })
             })
-
-
         });
     });
 };
+
+
 
 var createRecent = function (cityName) {
   var newButton = document.createElement("button");
   newButton.textContent = cityName;
   newButton.addEventListener("click", function (event) {
     getCityStats(event.target.textContent)
-    localStorage.setItem("cityName");
   })
-
   document.querySelector(".recent-searches").append(newButton);
   newButton.setAttribute("class", "button btn-primary btn-block flex-row");
+
+
 }
 
 var formSubmitHandler = function (event) {
@@ -132,43 +151,10 @@ var formSubmitHandler = function (event) {
   console.log(event);
 };
 
+
 cityFormEl.addEventListener("submit", formSubmitHandler);
 
+// document.dailyBox.innerHTML = "";
 
-//Click Handlers
-// $("#search-button").on("click", displayWeather);
-// $(document).on("click", invokePastSearch);
-// $(window).on("load", loadlastCity);
-// $("#clear-history").on("click", clearHistory);
-
-// var getUVIndex = function(event) {
-//   var apiUrlUV
-
-//   //get UV Index
-//   var uvIndexURL = "https://api.openweathermap.org/data/2.5/uvi?appid=7e4c7478cc7ee1e11440bf55a8358ec3&lat=" + response.coord.lat + "&lon=" + response.coord.lat;
-//   $.ajax({
-//       url: uvIndexURL,
-//       method: "GET"
-//   }).then(function (uvresponse) {
-//       var uvindex = uvresponse.value;
-//       var backgroundcolor;
-//       if (uvindex <= 3) {
-//           backgroundcolor = "green";
-//       }
-//       else if (uvindex >= 3 || uvindex <= 6) {
-//           backgroundcolor = "yellow";
-//       }
-//       else if (uvindex >= 6 || uvindex <= 8) {
-//           backgroundcolor = "orange";
-//       }
-//       else {
-//           backgroundcolor = "red";
-//       }
-//       var uvdisplay = $("<p>").attr("class", "card-text").text("UV Index: ");
-//       uvdisplay.append($("<span>").attr("class", "uvindex").attr("style", ("background-color:" + backgroundcolor)).text(uvindex));
-//       cardBody.append(uvdisplay);
-
-//   });
-
-//   cardRow.append(textCntr);
-//   getForecast(response.id);
+// set new submission to local storage
+// localStorage.setItem("cityName", JSON.stringify(cityName));
