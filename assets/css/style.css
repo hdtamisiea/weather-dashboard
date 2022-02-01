@@ -19,3 +19,12 @@ h1 {
     background-color: #0d0850;
 }
 
+button {
+    border-radius: .25rem;
+}
+
+#current-day-info {
+    border-radius: .25rem;
+    margin-top: 5px;
+}
+
