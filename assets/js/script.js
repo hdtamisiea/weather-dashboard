@@ -25,7 +25,7 @@ var getFiveDayStats = function (cityName) {
 
     .then(function (data) {
       console.log(data);
-
+      dailyBox.innerHTML = "";
       for (var i = 0; i < 40; i += 8) {
 
         // create html
