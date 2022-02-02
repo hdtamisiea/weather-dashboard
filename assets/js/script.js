@@ -4,6 +4,7 @@ var cityFormEl = document.querySelector("#city-form");
 var cityInputEl = document.querySelector("#cityName");
 var dailyBox = document.getElementById("daily-box");
 
+
 // added moment.js to get current date as well as dates for 5 day forecast
 var date = moment().format("MMM Do, YYYY");
 var date1 = moment().add(1, 'days').format("MMM Do, YYYY");
@@ -19,7 +20,7 @@ let forecastDates = [date1, date2, date3, date4, date5];
 var getFiveDayStats = function (cityName) {
   // format the openweathermap api url
   var apiUrlFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=95f4113ff118dc3d9eecf2014570612e&units=imperial";
-  
+
   // make a request to the url
   fetch(apiUrlFiveDay).then(function (response) {
     return response.json();
@@ -38,7 +39,7 @@ var getFiveDayStats = function (cityName) {
         var card = document.createElement("div");
         var cardBody = document.createElement("div");
         var forecastDate = document.createElement("h4");
- 
+
         var iconEl = document.createElement("img");
         var iconUrl = (`https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}.png`);
         iconEl.setAttribute('src', iconUrl);
@@ -103,7 +104,7 @@ var getCityStats = function (cityName) {
 
                   // Set up the color coded uvi display based on the response in api
                   let uvi = data2.current.uvi
-                  
+
                   if (uvi < 2) {
                     currentDayUV.classList.add("bg-success");
                   }
@@ -113,7 +114,7 @@ var getCityStats = function (cityName) {
                     currentDayUV.classList.add("bg-warning");
                   }
 
-                  else { 
+                  else {
                     currentDayUV.classList.add("bg-danger");
                   }
 
@@ -122,21 +123,23 @@ var getCityStats = function (cityName) {
                   var currentDayIcon = document.querySelector(".current-day-icon");
                   currentDayIcon.setAttribute('src', iconUrl);
 
-                  // calling the 5 day forecast function
-                  getFiveDayStats(cityName)
-                })
+                  
+              // calling the 5 day forecast function
+              getFiveDayStats(cityName)
             })
-        });
+        })
     });
+});
 };
 
 // Create a new button for every new city entered, this will be saved to local storage. User can either type in a new city, or choose a recent search.
 var createRecent = function (cityName) {
   var newButton = document.createElement("button");
+  // console.log(newButton);
 
   // Set text content of recent search button and change to uppercase for appearances
   newButton.textContent = cityName.toUpperCase();
- 
+
   // Event listener to get weather if a previous search button is clicked
   newButton.addEventListener("click", function (event) {
     getCityStats(event.target.textContent)
@@ -160,7 +163,7 @@ var formSubmitHandler = function (event) {
     // reset box to be empty
     cityInputEl.value = "";
 
-// If no city name is entered, alert user that input is required
+    // If no city name is entered, alert user that input is required
   } else {
     alert("Please enter a City Name");
   }

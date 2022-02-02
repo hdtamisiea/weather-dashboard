@@ -1,3 +1,4 @@
+/* styling for header */
 #weatherDashboard {
     background: #2462d4;
     background: -moz-linear-gradient(left,  #2462d4 0%, #24075b 100%);
@@ -5,29 +6,31 @@
     background: linear-gradient(to right,  #2462d4 0%,#24075b 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2462d4', endColorstr='#24075b',GradientType=1 );
     padding: .4rem 0px;  
-    color: white;    
+    color: white;  
+    text-align: center;  
 }
 
-h1 {
-    text-align: center;
-}
-
+/* styling to make 5 day forecast cards with white text and dark blue background */
 .card {
-   color: white;
+    color: white;
     background-color: #0d0850;
 }
 
+/* Give all buttons a border radius */
 button {
     border-radius: .25rem;
 }
 
+/* Give current weather box border radius to match buttons and separation from header */
 #current-day-info {
     border-radius: .25rem;
     margin-top: 5px;
 }
 
+/* Targeting uv index text content container to make border radius match other elements and padding to increase the size of the box */
 span {
     border-radius: .25rem;
     color: white;
-    padding: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }

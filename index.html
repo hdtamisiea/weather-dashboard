@@ -16,13 +16,14 @@
 </head>
 
 <body>
+  <!-- Set up header -->
   <header class="hero container-fluid">
     <div class="row" id="weatherDashboard">
       <h1 class="col font-weight-bold text-light">Weather Dashboard</h1>
     </div>
   </header>
 
-
+<!-- Set up input field and submit button chose not to use label to match mock up -->
   <main class="container-fluid">
     <div class="row flex-row justify-space-between">
 
@@ -37,25 +38,25 @@
           </form>
         </div>
 
+        <!-- Container to hold Recent Searches -->
         <div class="recent-searches">
           <h3 class="mt-5 prior-search-block city-block">Recent Searches:</h3>
         </div>
       </div>
 
-
-
+<!-- Container and elements for current day weather info -->
       <div class="col-12 col-md-8">
         <!-- current day weather data -->
         <div id="current-day-info" class="border border-primary mb-3 p-3">
           <h2 id="current-day-city-date">City (Date) Weather Conditions </h2>
           <img class="current-day-icon" />
-
           <p id="current-day-temp">Temp: </p>
           <p id="current-day-wind">Wind: </p>
           <p id="current-day-humidity">Humidity: </p>
           <p id="current-day-uv">UV Index: <span id="uvBtn"></span> </p>
         </div>
 
+        <!-- Container to hold 5 day forecast cards -->
         <div class="container">
           <div class="flex-row">
             <div class="col">
@@ -64,18 +65,15 @@
 
             <div id="five-day-box" class="row">
               <div id="daily-box" class="row">
-
-
               </div>
             </div>
-
           </div>
         </div>
-
-
       </div>
     </div>
   </main>
+
+  <!-- Script tags for moment js, jquery, popper.min and bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
