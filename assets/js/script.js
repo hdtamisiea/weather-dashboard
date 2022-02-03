@@ -3,6 +3,8 @@ var APIKey = "95f4113ff118dc3d9eecf2014570612e";
 var cityFormEl = document.querySelector("#city-form");
 var cityInputEl = document.querySelector("#city-name");
 var dailyBox = document.getElementById("daily-box");
+
+// Create array to store searched cities, and load them right away if any are stored. If none are stored, the array will be empty.
 var saveCityArr = JSON.parse(localStorage.getItem("cities")) || [];
 
 
@@ -137,14 +139,12 @@ var getCityStats = function (cityName) {
 // Create a new button for every new city entered, this will be saved to local storage. User can either type in a new city, or choose a recent search.
 var createRecent = function (cityName) {
   var newButton = document.createElement("button");
-  // console.log(newButton);
 
   // Set text content of recent search button and change to uppercase for appearances
   newButton.textContent = cityName.toUpperCase();
-  
 
+  // Save entries (which we will use key of "cities") to stringify the content into the value of the array.
   localStorage.setItem("cities", JSON.stringify(saveCityArr));
-
 
   // Event listener to get weather if a previous search button is clicked
   newButton.addEventListener("click", function (event) {
@@ -156,146 +156,32 @@ var createRecent = function (cityName) {
   newButton.setAttribute("class", "button btn-primary btn-block flex-row");
 }
 
-  //   function saveSearchHistory(cityName) {
-  //     var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-  //     searchHistory.push(cityName);
-  //     searchHistory = searchHistory.filter(function(value, index, array) {
-  //         return array.indexOf(value) === index
-  //     });
-  //     if (searchHistory.length > 10) {
-  //         searchHistory = searchHistory.slice(1, 11);
-  //     }
-  //     localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-  //     loadSearchHistory();
-  // }
+// function to gather city name from user and display today's weather stats
+var formSubmitHandler = function (event) {
+  event.preventDefault();
+  // get value from input element
+  var cityName = cityInputEl.value.trim();
 
-  // function loadSearchHistory() {
-  //       var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-  //       searchHistoryListEl.innerHTML = "";
+  // If a city name is entered create a recent search button and run function to retrieve today's weather stats
+  if (cityName) {
+    saveCityArr.push(cityName)
+    createRecent(cityName);
+    getCityStats(cityName);
 
-  //       for (let i = 0; i < searchHistory.length; i++) {
-  //           var searchHistoryListItemEl = document.createElement("li");
-  //           searchHistoryListItemEl.textContent = searchHistory[i];
+    // reset box to be empty
+    cityInputEl.value = "";
 
-  //           searchHistoryListEl.prepend(searchHistoryListItemEl);
-  //       }
-  //   }
-
-  // }
-
-
-  // function to gather city name from user and display today's weather stats
-  var formSubmitHandler = function (event) {
-    event.preventDefault();
-    // get value from input element
-    var cityName = cityInputEl.value.trim();
-
-    // If a city name is entered create a recent search button and run function to retrieve today's weather stats
-    if (cityName) {
-      saveCityArr.push(cityName)
-      createRecent(cityName);
-      getCityStats(cityName);
-     
-      // reset box to be empty
-      cityInputEl.value = "";
-
-      // If no city name is entered, alert user that input is required
-    } else {
-      alert("Please enter a City Name");
-    }
-    console.log(event);
-
-    // saveCity();
-    // getSavedCities();
-  };
-
-  cityFormEl.addEventListener("submit", formSubmitHandler);
-
-  for (let i = 0; i < saveCityArr.length; i++) {
-    createRecent(saveCityArr[i]);
-    console.log("hello")
+    // If no city name is entered, alert user that input is required
+  } else {
+    alert("Please enter a City Name");
   }
+  console.log(event);
+};
 
-// var newCityArray = [];
-// var size = 5;
+cityFormEl.addEventListener("submit", formSubmitHandler);
 
-// for (var i = 0; i < size; i++) {
-//   newCityArray[i] = (cityName + (i + 1));
-// }
+// for loop to list saved cities as recent searches
+for (let i = 0; i < saveCityArr.length; i++) {
+  createRecent(saveCityArr[i]);
+};
 
-// function saveSearchHistory(cityName) {
-//       var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-//       searchHistory.push(cityName);
-//       searchHistory = searchHistory.filter(function(value, index, array) {
-//           return array.indexOf(value) === index
-//       });
-//       if (searchHistory.length > 10) {
-//           searchHistory = searchHistory.slice(1, 11);
-//       }
-//       localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
-//       loadSearchHistory();
-//   }
-
-//   function loadSearchHistory() {
-//         var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
-//         searchHistoryListEl.innerHTML = "";
-
-//         for (let i = 0; i < searchHistory.length; i++) {
-//             var searchHistoryListItemEl = document.createElement("li");
-//             searchHistoryListItemEl.textContent = searchHistory[i];
-
-//             searchHistoryListEl.prepend(searchHistoryListItemEl);
-//         }
-//     }
-
-// function saveArray() {
-//   var savedCities = [];
-//   for (var i = 0; i < savedCities.length; i++) {
-//     cityInputEl(savedCities[i]);
-//     localStorage.setItem("savedCities", JSON.stringify(cityInputEl.value));
-//   }
-// }
-
-
-
-//   var newCity = {};
-//   $(`.cityName`).each(function() {
-//     newCity[this.id] = this.value;
-//   })
-//   console.log(localStorage.getItem("savedCity"));
-//   console.log(JSON.parse(localStorage.getItem("savedCity")));
-// }
-//   var cityName = cityInputEl.value.trim();
-//   var newCity = JSON.stringify(cityName);
-//   localStorage.setItem("cityName", newCity);
-
-//   var getStoredCities = localStorage.getItem("cityName");
-
-// };
-
-
-
-// function getSavedCities() {
-//   var newCity = localStorage.getItem("newCity");
-//   document.getElementById("")
-// }
-
-// var loadCities = function() {
-//   var savedCities = localStorage.getItem("cityName");
-//   if (!savedCities) {
-//     return false;
-//   } 
-//   savedCities = JSON.parse(savedCities);
-
-//   for (var i = 0; i < savedCities.length; i++) {
-//     cityInputEl(savedCities[i]);
-//   }
-// };
-
-// loadCities();
-
-// Once a city is entered and "Get Weather" is clicked, run formSubmitHandler
-
-
-// set new submission to local storage
-// localStorage.setItem("cityName", JSON.stringify(cityName))
