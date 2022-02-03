@@ -41,5 +41,5 @@ The following resources were used in creating this quiz:
 * https://stackoverflow.com/questions/31669536/how-to-put-a-degree-symbol-in-an-html-input-field-through-javascript
 * https://www.w3schools.com/jsref/jsref_toUpperCase.asp
 * https://www.w3schools.com/js/js_loop_for.asp
-* https://www.roseindia.net/java/javascript-array/javascript-array-input.shtml#:~:text=The%20example%20create%20a%20HTML%20Page%20JavaScript%20array,       insert%20%28%29accept%20the%20value%20entered%20by%20the%20user
+* https://www.roseindia.net/java/javascript-array/javascript-array-input.shtml#:~:text=The%20example%20create%20a%20HTML%20Page%20JavaScript%20array,insert%20%28%29accept%20the%20value%20entered%20by%20the%20user
 * https://stackoverflow.com/questions/35441820/moment-js-tomorrow-today-and-yesterday
